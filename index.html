@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connect to MetaMask</title>
+    <script src="https://cdn.jsdelivr.net/npm/web3/dist/web3.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: url('bg_metamask.png') no-repeat center center fixed;
+            /* Thêm ảnh nền */
+            background-size: cover;
+            /* Đảm bảo ảnh phủ hết màn hình */
+            color: #fff;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            transform: translateX(-300px);
+            /* Đổ bóng cho chữ */
+        }
+
+        button {
+            margin: 10px 0;
+            padding: 15px 30px;
+            font-size: 20px;
+            cursor: pointer;
+            background-color: #ff77b7;
+            /* Màu hồng nhạt */
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #ff4d94;
+            /* Màu hồng đậm khi hover */
+        }
+
+        h1 {
+            font-size: 40px;
+            margin-bottom: 20px;
+            text-align: center;
+            color: #0552bd;
+        }
+
+        h3 {
+            font-size: 30px;
+            margin-bottom: 5px;
+            text-align: center;
+            color: #0552bd;
+        }
+
+        #status {
+            margin: 20px 0;
+            font-size: 24px;
+            text-align: center;
+            color: #f0f0f0;
+        }
+
+        #status.success {
+            color: rgb(2, 140, 2);
+            /* Màu xanh lá cây cho trạng thái kết nối thành công */
+        }
+
+        #accountsList {
+            list-style: none;
+            padding: 0;
+            width: 100%;
+            max-width: 600px;
+            max-height: 300px;
+            overflow-y: auto;
+            background: rgba(255, 255, 255, 0.314);
+            /* Nền trắng với một chút trong suốt */
+
+            /* Thêm nền sáng cho danh sách */
+            color: #333;
+            /* Màu chữ tối hơn cho dễ đọc */
+            border: 1px solid #55555526;
+            border-radius: 5px;
+        }
+
+        #accountsList li {
+            margin: 10px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.314);
+            /* Màu nền sáng hơn cho mỗi mục */
+            color: #333;
+            /* Màu chữ tối để nổi bật */
+            border: 1px solid #ddd;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 5px;
+        }
+
+        #accountsList button {
+            background-color: #ff4500;
+            /* Màu cam */
+            border: none;
+            border-radius: 5px;
+            padding: 5px 10px;
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        #accountsList button:hover {
+            background-color: #ff6347;
+            /* Màu đỏ cam khi hover */
+        }
+    </style>
+</head>
+
+<body>
+    <h1>WalletConnect MetaMask</h1>
+    <button id="connectButton">Connect MetaMask</button>
+    <p id="status">Not connected</p>
+
+    <h3>Accounts</h3>
+    <ul id="accountsList"></ul>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
