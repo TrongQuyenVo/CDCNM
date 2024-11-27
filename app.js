@@ -54,12 +54,46 @@ function renderAccounts() {
         const deleteButton = document.createElement('button');
         deleteButton.textContent = 'Delete';
         deleteButton.style.marginLeft = '10px';
+        deleteButton.style.padding = '5px 10px'; // Kích thước nhỏ hơn
+        deleteButton.style.fontSize = '12px'; // Cỡ chữ nhỏ hơn
         deleteButton.addEventListener('click', () => deleteAccount(index));
         listItem.appendChild(deleteButton);
 
+        // Thêm nút cập nhật
+        const updateButton = document.createElement('button');
+        updateButton.textContent = 'Update';
+        updateButton.style.marginLeft = '10px';
+        updateButton.style.padding = '5px 10px'; // Kích thước nhỏ hơn
+        updateButton.style.fontSize = '12px'; // Cỡ chữ nhỏ hơn
+        updateButton.addEventListener('click', () => updateAccount(index));
+        listItem.appendChild(updateButton);
+
         accountsList.appendChild(listItem);
     });
+
+    // Thêm nút Add ở dưới danh sách
+    const addButton = document.createElement('button');
+    addButton.textContent = 'Add';
+    addButton.style.display = 'block';
+    addButton.style.margin = '10px auto';
+    addButton.style.backgroundColor = '#28a745';
+    addButton.style.color = '#fff';
+    addButton.style.border = 'none';
+    addButton.style.borderRadius = '5px';
+    addButton.style.cursor = 'pointer';
+    addButton.addEventListener('mouseover', () => {
+        addButton.style.backgroundColor = '#218838'; // Màu đậm hơn khi hover
+    });
+
+    // Khôi phục màu khi chuột rời khỏi
+    addButton.addEventListener('mouseout', () => {
+        addButton.style.backgroundColor = '#28a745'; // Khôi phục màu ban đầu
+    });
+
+    addButton.addEventListener('click', addAccount);
+    accountsList.appendChild(addButton);
 }
+
 
 // Xóa tài khoản theo index
 function deleteAccount(index) {
@@ -67,5 +101,22 @@ function deleteAccount(index) {
     renderAccounts(); // Cập nhật lại giao diện
 }
 
+// Cập nhật tài khoản theo index
+function updateAccount(index) {
+    const newAccount = prompt('Enter the new account address:', accounts[index]);
+    if (newAccount) {
+        accounts[index] = newAccount; // Cập nhật tài khoản
+        renderAccounts(); // Cập nhật lại giao diện
+    }
+}
+
+// Thêm tài khoản mới
+function addAccount() {
+    const newAccount = prompt('Enter the new account address:');
+    if (newAccount) {
+        accounts.push(newAccount); // Thêm tài khoản vào danh sách
+        renderAccounts(); // Cập nhật lại giao diện
+    }
+}
 // Gán sự kiện
 connectButton.addEventListener('click', connectMetaMask);
